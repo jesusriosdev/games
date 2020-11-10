@@ -1,0 +1,26 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Just a game to practice some html, css and js.",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "game",
+    "tic",
+    "tac",
+    "toe",
+    "tic-tac-toe",
+    "html",
+    "css",
+    "js",
+    "play"
+  ],
+  "author": "Jesus Rios <etxcoding@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
