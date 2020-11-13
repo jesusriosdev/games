@@ -1,4 +1,9 @@
+* {
+    outline: 1px solid red;
+}
 body {
+    background: linear-gradient(90deg, #222 0%, #222 25%);
+    color: #fff;
     font-family: monospace;
     margin: 0;
     padding: 0;
@@ -6,4 +11,49 @@ body {
 
 header {
     text-align: center;
+}
+
+.players-container {
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.players-container div {
+    padding: 10px;
+}
+.players-container .player-one {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.board-container {
+    text-align: center;
+}
+
+.board-container .board {
+    margin: 0 auto;
+
+    height: 600px;
+    width: 600px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.board-container .board .square {
+    border: 1px solid black;
+}
+
+.results-container {
+    text-align: center;
+}
+
+.play-again-container {
+    text-align: center;
+}
+
+.credits-container {
+    padding: 10px;
+    text-align: right;
 }
