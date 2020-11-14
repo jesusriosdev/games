@@ -1,6 +1,7 @@
-* {
+/* * {
     outline: 1px solid red;
-}
+} */
+
 body {
     background: linear-gradient(90deg, #222 0%, #222 25%);
     color: #fff;
@@ -14,16 +15,25 @@ header {
 }
 
 .players-container {
+    margin: 10px 0;
     
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 .players-container div {
     padding: 10px;
+
+    display: flex;
+    align-items: center;
 }
 .players-container .player-one {
     display: flex;
     justify-content: flex-end;
+}
+
+.players-container .active {
+    border: 1px solid #fff;
+    font-size: 1.5em;
 }
 
 .board-container {
@@ -42,7 +52,8 @@ header {
 }
 
 .board-container .board .square {
-    border: 1px solid black;
+    border: 1px solid #fff;
+    cursor: pointer;
     height: 197px;
 
     display: flex;
@@ -55,10 +66,12 @@ header {
 }
 
 .results-container {
+    font-size: 3em;
     text-align: center;
 }
 
 .play-again-container {
+    margin: 10px 0;
     text-align: center;
 }
 
