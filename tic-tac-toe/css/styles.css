@@ -43,6 +43,15 @@ header {
 
 .board-container .board .square {
     border: 1px solid black;
+    height: 197px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-container .board .square {
+    font-size: 4em;
 }
 
 .results-container {
