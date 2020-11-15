@@ -71,8 +71,10 @@ function move(number) {
         if(numberOfTurns === 9) {
             winner = '/';
 
-            const resultsContainer = document.querySelector(`.results-container`);
-            resultsContainer.innerHTML = `<h1>Winner: THIS IS A TIE!</h1>`;
+            const winnerResultText = document.querySelector(`#winner-result-text`);
+            winnerResultText.innerHTML = `There's no winner: Tie!`;
+            modal.style.display = "block";
+
             return;
         }
 
