@@ -6,6 +6,18 @@ const values = ['X', 'O'];
 let moves = [];
 
 document.addEventListener('DOMContentLoaded', (e) => {
+    const modal = document.getElementById("modal-result");
+
+    const spanClose = document.querySelector(`.close`);
+    spanClose.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+    }
 });
 
 init();
@@ -18,11 +30,11 @@ function init() {
     turn = 1;
     moves = [];
 
-    const playerOne = document.querySelector(`.player-one`);
-    const playerTwo = document.querySelector(`.player-two`);
-    playerOne.classList.remove('active');
-    playerTwo.classList.remove('active');
-    playerOne.classList.add('active');
+    const playerOneText = document.querySelector(`.player-one-text`);
+    const playerTwoText = document.querySelector(`.player-two-text`);
+    playerOneText.classList.remove('active');
+    playerTwoText.classList.remove('active');
+    playerOneText.classList.add('active');
 
 	document.querySelectorAll('.square').forEach((square) => {
 		square.innerHTML = '';
@@ -44,10 +56,15 @@ function move(number) {
         const square = document.querySelector(`div[data-key="${number}"]`);
         square.innerHTML = values[turn - 1];
         
+        const modal = document.getElementById("modal-result");
+
         winner = checkForWinner();
         if (winner) {
-            const resultsContainer = document.querySelector(`.results-container`);
-            resultsContainer.innerHTML = `<h1>Winner: Player ${turn}!</h1>`;
+            
+            const winnerResultText = document.querySelector(`#winner-result-text`);
+            winnerResultText.innerHTML = `Winner: Player ${turn}!`;
+            modal.style.display = "block";
+
             return;
         }
         
@@ -59,18 +76,18 @@ function move(number) {
             return;
         }
 
-        const playerOne = document.querySelector(`.player-one`);
-        const playerTwo = document.querySelector(`.player-two`);
+        const playerOneText = document.querySelector(`.player-one-text`);
+        const playerTwoText = document.querySelector(`.player-two-text`);
         if(turn === 1) {
 
             turn = 2;
-            playerOne.classList.remove('active');
-            playerTwo.classList.add('active');
+            playerOneText.classList.remove('active');
+            playerTwoText.classList.add('active');
         } else {
 
             turn = 1;
-            playerTwo.classList.remove('active');
-            playerOne.classList.add('active');
+            playerTwoText.classList.remove('active');
+            playerOneText.classList.add('active');
         }
     }
 }

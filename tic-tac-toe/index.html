@@ -8,16 +8,24 @@
 		<link rel="stylesheet" href="css/styles.css" />
 	</head>
 	<body>
+
+        <div id="modal-result" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1 id="winner-result-text"></h1>
+            </div>
+        </div>
+
 		<header>
 			<h1>TIC-TAC-TOE (GATO)</h1>
 		</header>
 
 		<section class="players-container">
 			<div class="player-one">
-				<h2>Player 1</h2>
+				<h2 class="player-one-text">Player 1</h2>
 			</div>
 			<div class="player-two">
-				<h2>Player 2</h2>
+				<h2 class="player-two-text">Player 2</h2>
 			</div>
 		</section>
 		<section class="board-container">
@@ -38,7 +46,9 @@
 		</section>
 
 		<section class="play-again-container">
-			<button onclick="init()">Play again</button>
+            <div>
+                <a onclick="init()">Play again</a>
+            </div>
 		</section>
 
 		<section class="credits-container">
