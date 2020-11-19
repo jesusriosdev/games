@@ -1,25 +1,128 @@
 /******** GENERAL STARTS ********/
+:root {
 
-body {
-    background-color: #222;
-    color: #fff;
-    font-family: monospace;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
+    --q-one-dark-color: darkred;
+    --q-two-dark-color: darkblue;
+    --q-three-dark-color: #9B870C;
+    --q-four-dark-color: darkgreen;
+
+    --q-one-color: red;
+    --q-two-color: blue;
+    --q-three-color: yellow;
+    --q-four-color: green;
 }
 
-h1, h2, h3, h4, h5 {
-    margin: 0;
+body {
+	background-color: #222;
+	color: #fff;
+	font-family: monospace;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin: 0;
 }
 
 /******** GENERAL ENDS ********/
 
+/******** HEADER STARTS ********/
+
+header {
+	margin: 10px 0;
+	text-align: center;
+}
+
+/******** HEADER ENDS ********/
+
 /******** BOARD STARTS ********/
+
+.board-container {
+	margin: 10px 0;
+}
+
+.board-container .board {
+    margin: 0 auto;
+
+    height: 600px;
+    width: 600px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.board-container .board .quadrant {
+    cursor: pointer;
+    margin: 5px;
+    transition: transform .2s;
+}
+
+.board-container .board .q-one {
+    background-color: var(--q-one-dark-color);
+}
+.board-container .board .q-one.active {
+    background-color: var(--q-one-color);
+    transform: scale(1.1)
+}
+
+.board-container .board .q-two {
+    background-color: var(--q-two-dark-color);
+}
+.board-container .board .q-two.active {
+    background-color: var(--q-two-color);
+    transform: scale(1.1)
+}
+
+.board-container .board .q-three {
+    background-color: var(--q-three-dark-color);
+}
+.board-container .board .q-three.active {
+    background-color: var(--q-three-color);
+    transform: scale(1.1)
+}
+
+.board-container .board .q-four {
+    background-color: var(--q-four-dark-color);
+}
+.board-container .board .q-four.active {
+    background-color: var(--q-four-color);
+    transform: scale(1.1)
+}
 /******** BOARD ENDS ********/
 
 /******** PLAY AGAIN STARTS ********/
+
+.play-again-container {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.play-again-container a {
+    border: 1px solid #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.play-again-container a:hover {
+    background-color: darkgray;
+}
+
 /******** PLAY AGAIN ENDS ********/
 
 /******** CREDITS STARTS ********/
+
+.credits-container {
+    margin: 10px;
+    text-align: right;
+}
+
+.credits-container a {
+    color: white;
+}
+
 /******** CREDITS ENDS ********/
