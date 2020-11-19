@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon Says</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Simon Says</title>
 
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<header>
+			<h1>SIMON SAYS</h1>
+		</header>
 
-    <header>
-        <h1>SIMON SAYS</h1>
-    </header>
+		<section class="play-container">
+			<div class="play-start-new-game">
+				<a onclick="init()">Start Game</a>
+			</div>
+			<div class="play-options">
+				<a>Options</a>
+			</div>
+        </section>
+        
+        <section class="score-container">
+            <div class="score">
+                <h3>Score: 0</h3>
+            </div>
+        </section>
 
-    <section class="board-container">
-        <div class="board">
-            <div class="quadrant q-one"     data-key="1" onclick="playerClick(1)"></div>
-            <div class="quadrant q-two"     data-key="2" onclick="playerClick(2)"></div>
-            <div class="quadrant q-three"   data-key="3" onclick="playerClick(3)"></div>
-            <div class="quadrant q-four"    data-key="4" onclick="playerClick(4)"></div>
-        </div>
-    </section>
+		<section class="board-container">
+			<div class="board">
+				<div class="quadrant q-one" data-key="1" onclick="playerClick(1)"></div>
+				<div class="quadrant q-two" data-key="2" onclick="playerClick(2)"></div>
+				<div
+					class="quadrant q-three"
+					data-key="3"
+					onclick="playerClick(3)"
+				></div>
+				<div
+					class="quadrant q-four"
+					data-key="4"
+					onclick="playerClick(4)"
+				></div>
+			</div>
+		</section>
 
-    <section class="play-again-container">
-        <a onclick="init()">Play Again</a>
-    </section>
+		<section class="credits-container">
+			<div>
+				Developed by
+				<a target="_blank" href="https://jesusrios.dev/">Jesus Rios</a>
+			</div>
+		</section>
 
-    <section class="credits-container">
-        <div>
-            Developed by <a target="_blank" href="https://jesusrios.dev/">Jesus Rios</a>
-        </div>
-    </section>
-    
-    <script src="js/scripts.js"></script>
-</body>
+		<script src="js/scripts.js"></script>
+	</body>
 </html>

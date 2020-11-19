@@ -35,6 +35,48 @@ header {
 
 /******** HEADER ENDS ********/
 
+/******** PLAY STARTS ********/
+
+.play-container {
+    margin: 30px 0;
+    text-align: center;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.play-container div {
+    padding: 0 20px;
+}
+
+.play-container .play-start-new-game {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.play-container .play-options {
+    display: flex;
+}
+
+.play-container a {
+    border: 1px solid #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.play-container a:hover {
+    background-color: darkgray;
+}
+
+/******** PLAY ENDS ********/
+
+/******** BOARD STARTS ********/
+.score-container {
+    margin: 10px 0;
+    text-align: center;
+}
+/******** PLAY ENDS ********/
+
 /******** BOARD STARTS ********/
 
 .board-container {
@@ -79,25 +121,6 @@ header {
 }
 
 /******** BOARD ENDS ********/
-
-/******** PLAY AGAIN STARTS ********/
-
-.play-again-container {
-    margin: 50px 0;
-    text-align: center;
-}
-
-.play-again-container a {
-    border: 1px solid #fff;
-    cursor: pointer;
-    padding: 10px 20px;
-}
-
-.play-again-container a:hover {
-    background-color: darkgray;
-}
-
-/******** PLAY AGAIN ENDS ********/
 
 /******** CREDITS STARTS ********/
 

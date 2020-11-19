@@ -1,35 +1,49 @@
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
 let playerTurn = false;
-let moves = 1;
+let moves = 0;
 let cpuQuadrants = [];
 let playerQuadrants = [];
 
 async function init() {
-    moves = 1;
+    
     cpuQuadrants = [];
     playerQuadrants = [];
+
+    const scoreText = document.querySelector('.score h3');
+    scoreText.innerHTML = `Score: 0`;
 
     startSequence();
 }
 
 async function startSequence() {
 
+    moves = 0;
     console.log('Starting sequence..')
     playerTurn = false;
-    while (cpuQuadrants.length < moves) {
-        let randomNumber = randomQuadrant();
-        console.log(`random number: ${randomNumber}`);
-        if(true) {
 
-            await sleep(500);
-            const quadrant = document.querySelector(`div[data-key="${randomNumber}"]`);
-            quadrant.classList.add('active');
-            cpuQuadrants.push(randomNumber);
-            await sleep(200);
-            quadrant.classList.remove('active');
-        }
+    for (const q of cpuQuadrants) {
+        console.log(`cpuQuadrant: ${q}`);
+        await sleep(500);
+        const quadrant = document.querySelector(`div[data-key="${q}"]`);
+        quadrant.classList.add('active');
+        await sleep(200);
+        quadrant.classList.remove('active');
     }
+
+    let randomNumber = randomQuadrant();
+    console.log(`random number: ${randomNumber}`);
+    if(true) {
+
+        await sleep(500);
+        const quadrant = document.querySelector(`div[data-key="${randomNumber}"]`);
+        quadrant.classList.add('active');
+        cpuQuadrants.push(randomNumber);
+        await sleep(200);
+        quadrant.classList.remove('active');
+    }
+    
+
     playerTurn = true;
 }
 
@@ -38,9 +52,36 @@ function randomQuadrant() {
 }
 
 async function playerClick(number) {
-    console.log(`number clicked: ${number}`);
-    const quadrant = document.querySelector(`div[data-key="${number}"]`);
-    quadrant.classList.add('active');
-    await sleep(200);
-    quadrant.classList.remove('active');
+    if(playerTurn === true) {
+
+        console.log(`number clicked: ${number}`);
+        playerQuadrants.push(number);
+
+        const quadrant = document.querySelector(`div[data-key="${number}"]`);
+        quadrant.classList.add('active');
+        await sleep(200);
+        quadrant.classList.remove('active');
+
+        if(cpuQuadrants[moves] === number) {
+            
+            moves++;
+
+            const scoreText = document.querySelector('.score h3');
+            scoreText.innerHTML = `Score: ${moves}`;
+
+            await sleep(500);
+
+            if(moves === cpuQuadrants.length) {
+                console.log('All good.. start new sequence.');
+                startSequence();
+                return;
+            } else {
+                console.log('All good.. wait for next number.');
+            }
+
+        }
+        else {
+            console.log('game over dude..');
+        }
+    }
 }
