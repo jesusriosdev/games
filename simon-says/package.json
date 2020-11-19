@@ -1,0 +1,25 @@
+{
+  "name": "simon-says",
+  "version": "1.0.0",
+  "description": "Another game to do some practice.",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "game",
+    "play",
+    "html",
+    "css",
+    "js",
+    "simon",
+    "says",
+    "simonsays"
+  ],
+  "author": "Jesus Rios <etxcoding@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Says</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>SIMON SAYS</h1>
+    </header>
+
+    <section class="board-container">
+        <div class="board">
+            <div class="quadrant" data-key="1" onclick="play(1)"></div>
+            <div class="quadrant" data-key="1" onclick="play(1)"></div>
+            <div class="quadrant" data-key="1" onclick="play(1)"></div>
+            <div class="quadrant" data-key="1" onclick="play(1)"></div>
+        </div>
+    </section>
+
+    <section class="play-again-container">
+        <a onclick="init()">Play Again</a>
+    </section>
+
+    <section class="credits-container">
+        <div>
+            Developed by <a href="https://jesusrios.dev/">Jesus Rios</a>
+        </div>
+    </section>
+    
+    <script src="js/scripts.js"></script>
+</body>
+</html>

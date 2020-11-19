@@ -1,0 +1,25 @@
+/******** GENERAL STARTS ********/
+
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: monospace;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+/******** GENERAL ENDS ********/
+
+/******** BOARD STARTS ********/
+/******** BOARD ENDS ********/
+
+/******** PLAY AGAIN STARTS ********/
+/******** PLAY AGAIN ENDS ********/
+
+/******** CREDITS STARTS ********/
+/******** CREDITS ENDS ********/
