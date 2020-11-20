@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
 init();
 
 function init() {
-    console.log('Starting new game, have fun!');
-    
     winner = '';
 	numberOfTurns = 0;
     turn = 1;
@@ -45,9 +43,7 @@ function init() {
 }
 
 function move(number) {
-    console.log(`Number clicked: ${number}`);
-    // console.log(moves.includes(number));
-    // console.log(moves.includes(number) === false && winner === '');
+    
     if(moves.includes(number) === false && winner === '') {
 
         moves.push(number);
@@ -58,7 +54,7 @@ function move(number) {
         
         const modal = document.getElementById("modal-result");
 
-        winner = checkForWinner();
+        winner = checkForWinner(values[turn - 1]);
         if (winner) {
             
             const winnerResultText = document.querySelector(`#winner-result-text`);
@@ -94,7 +90,7 @@ function move(number) {
     }
 }
 
-function checkForWinner() {
+function checkForWinner(v) {
 	let square1 = document.querySelector(`div[data-key="${1}"]`);
 	let square2 = document.querySelector(`div[data-key="${2}"]`);
 	let square3 = document.querySelector(`div[data-key="${3}"]`);
@@ -105,20 +101,18 @@ function checkForWinner() {
 	let square8 = document.querySelector(`div[data-key="${8}"]`);
 	let square9 = document.querySelector(`div[data-key="${9}"]`);
 
-	for (const v of values) {
-		if (checkLines(square1, square2, square3, v)) return v;
-		if (checkLines(square1, square5, square9, v)) return v;
-		if (checkLines(square1, square4, square7, v)) return v;
+    if (checkLines(square1, square2, square3, v)) return v;
+    if (checkLines(square1, square5, square9, v)) return v;
+    if (checkLines(square1, square4, square7, v)) return v;
 
-		if (checkLines(square2, square5, square8, v)) return v;
+    if (checkLines(square2, square5, square8, v)) return v;
 
-		if (checkLines(square3, square6, square9, v)) return v;
-		if (checkLines(square3, square5, square7, v)) return v;
+    if (checkLines(square3, square6, square9, v)) return v;
+    if (checkLines(square3, square5, square7, v)) return v;
 
-		if (checkLines(square4, square5, square6, v)) return v;
+    if (checkLines(square4, square5, square6, v)) return v;
 
-		if (checkLines(square7, square8, square9, v)) return v;
-	}
+    if (checkLines(square7, square8, square9, v)) return v;
 
 	return '';
 }
