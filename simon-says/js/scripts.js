@@ -5,6 +5,35 @@ let moves = 0;
 let cpuQuadrants = [];
 let playerQuadrants = [];
 
+document.addEventListener('DOMContentLoaded', (e) => {
+	const modalResult = document.getElementById('modal-result');
+	const spanCloseResult = document.querySelector(`#modal-result .close`);
+	spanCloseResult.onclick = function () {
+		modalResult.style.display = 'none';
+	};
+
+	const modalOptions = document.getElementById('modal-options');
+	const spanCloseOptions = document.querySelector(`#modal-options .close`);
+	spanCloseOptions.onclick = function () {
+		modalOptions.style.display = 'none';
+	};
+
+	const optionsButton = document.getElementById('options-button');
+	optionsButton.onclick = function () {
+		modalOptions.style.display = 'block';
+	};
+
+	window.onclick = function (event) {
+		if (event.target == modalResult) {
+			modalResult.style.display = 'none';
+		}
+
+		if (event.target == modalOptions) {
+			modalOptions.style.display = 'none';
+		}
+	};
+});
+
 async function init() {
 	cpuQuadrants = [];
 	playerQuadrants = [];
@@ -76,15 +105,15 @@ async function playerClick(number) {
 
 function showGameOverModal() {
 	setNewGameButtonDisplay('block');
-    setScore(0);
+	setScore(0);
 	setInstruction('');
 
 	const modal = document.getElementById('modal-result');
 	const resultText = document.querySelector(`#result-text`);
 	resultText.innerHTML = `Game Over! Your score: ${cpuQuadrants.length - 1}`;
-    modal.style.display = 'block';
-    
-    playerTurn = false;
+	modal.style.display = 'block';
+
+	playerTurn = false;
 }
 
 async function temporalyActiveQuadrant(number) {
@@ -110,32 +139,3 @@ function setNewGameButtonDisabledValue(value) {
 	const newGameButton = document.querySelector(`.play-start-new-game a`);
 	newGameButton.disabled = value;
 }
-
-document.addEventListener('DOMContentLoaded', (e) => {
-	const modalResult = document.getElementById('modal-result');
-	const spanCloseResult = document.querySelector(`#modal-result .close`);
-	spanCloseResult.onclick = function () {
-		modalResult.style.display = 'none';
-	};
-
-	const modalOptions = document.getElementById('modal-options');
-	const spanCloseOptions = document.querySelector(`#modal-options .close`);
-	spanCloseOptions.onclick = function () {
-		modalOptions.style.display = 'none';
-    };
-    
-	const optionsButton = document.getElementById('options-button');
-	optionsButton.onclick = function () {
-		modalOptions.style.display = 'block';
-    };
-    
-	window.onclick = function (event) {
-		if (event.target == modalResult) {
-			modalResult.style.display = 'none';
-		}
-
-		if (event.target == modalOptions) {
-			modalOptions.style.display = 'none';
-		}
-	};
-});

@@ -18,7 +18,7 @@
     "js",
     "play"
   ],
-  "author": "Jesus Rios <etxcoding@gmail.com>",
+  "author": "Jesus Rios <jesusriosdev@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "lite-server": "^2.5.4"
