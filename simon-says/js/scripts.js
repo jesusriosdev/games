@@ -47,7 +47,6 @@ async function init() {
 }
 
 async function startSequence() {
-	console.log('Starting sequence..');
 
 	setInstruction('Watch!');
 
@@ -89,13 +88,10 @@ async function playerClick(number) {
 			moves++;
 			await sleep(500);
 			if (moves === cpuQuadrants.length) {
-				console.log('All good.. start new sequence.');
 
 				setScore(moves);
 
 				startSequence();
-			} else {
-				console.log('All good.. wait for next number.');
 			}
 		} else {
 			showGameOverModal();
