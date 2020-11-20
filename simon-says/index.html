@@ -8,24 +8,38 @@
 		<link rel="stylesheet" href="css/styles.css" />
 	</head>
 	<body>
+		<div id="modal-result" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h1 id="result-text"></h1>
+			</div>
+		</div>
+
+		<div id="modal-options" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h1>Options coming soon...</h1>
+			</div>
+		</div>
+
 		<header>
 			<h1>SIMON SAYS</h1>
+
+			<div class="menu">
+				<a id="options-button"></a>
+			</div>
 		</header>
 
-		<section class="play-container">
-			<div class="play-start-new-game">
-				<a onclick="init()">Start Game</a>
+		<section class="new-game-container">
+			<a id="new-game-button" onclick="init()">START</a>
+		</section>
+
+		<section class="info-container">
+			<div class="info">
+				<div class="info-score">Score: 0</div>
+				<div class="info-instruction"></div>
 			</div>
-			<div class="play-options">
-				<a>Options</a>
-			</div>
-        </section>
-        
-        <section class="score-container">
-            <div class="score">
-                <h3>Score: 0</h3>
-            </div>
-        </section>
+		</section>
 
 		<section class="board-container">
 			<div class="board">

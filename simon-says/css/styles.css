@@ -1,11 +1,14 @@
 /******** GENERAL STARTS ********/
 :root {
-
-    --q-one-color: red;
-    --q-two-color: blue;
-    --q-three-color: yellow;
-    --q-four-color: green;
+	--q-one-color: red;
+	--q-two-color: blue;
+	--q-three-color: yellow;
+	--q-four-color: green;
 }
+
+/* * {
+	outline: 1px solid red;
+} */
 
 body {
 	background-color: #222;
@@ -33,48 +36,65 @@ header {
 	text-align: center;
 }
 
+header .menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+}
+
+header .menu a {
+    background-image: url(../img/cog-32.png);
+    /* background-position: center;
+    background-repeat: no-repeat; */
+    cursor: pointer;
+    padding: 0px 16px;
+    display: block;
+    height: 32px;
+}
+
+header .menu a:hover {
+    opacity: .5;
+}
+
 /******** HEADER ENDS ********/
 
-/******** PLAY STARTS ********/
+/******** NEW GAME STARTS ********/
 
-.play-container {
-    margin: 30px 0;
-    text-align: center;
-
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.play-container div {
-    padding: 0 20px;
-}
-
-.play-container .play-start-new-game {
+.new-game-container {
+    height: 40px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
-.play-container .play-options {
-    display: flex;
+.new-game-container a {
+	border: 1px solid #fff;
+	cursor: pointer;
+	padding: 10px 20px;
 }
 
-.play-container a {
-    border: 1px solid #fff;
-    cursor: pointer;
-    padding: 10px 20px;
+.new-game-container a:hover {
+	background-color: darkgray;
 }
 
-.play-container a:hover {
-    background-color: darkgray;
-}
-
-/******** PLAY ENDS ********/
+/******** NEW GAME ENDS ********/
 
 /******** BOARD STARTS ********/
-.score-container {
+.info-container {
     margin: 10px 0;
     text-align: center;
 }
+
+.info-container .info {
+	margin: 0 auto;
+
+	width: 600px;
+
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
 /******** PLAY ENDS ********/
 
 /******** BOARD STARTS ********/
@@ -84,40 +104,40 @@ header {
 }
 
 .board-container .board {
-    margin: 0 auto;
+	margin: 0 auto;
 
-    height: 600px;
-    width: 600px;
+	height: 600px;
+	width: 600px;
 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .board-container .board .quadrant {
-    cursor: pointer;
-    margin: 5px;
+	cursor: pointer;
+	margin: 5px;
 
-    opacity: .5;
-    transition: transform .2s;
+	opacity: 0.5;
+	transition: transform 0.2s;
 }
 
 .board-container .board .quadrant.active {
-    transform: scale(1.1);
-    opacity: 1;
-    z-index: 1;
+	transform: scale(1.1);
+	opacity: 1;
+	z-index: 1;
 }
 
 .board-container .board .q-one {
-    background-color: var(--q-one-color);
+	background-color: var(--q-one-color);
 }
 .board-container .board .q-two {
-    background-color: var(--q-two-color);
+	background-color: var(--q-two-color);
 }
 .board-container .board .q-three {
-    background-color: var(--q-three-color);
+	background-color: var(--q-three-color);
 }
 .board-container .board .q-four {
-    background-color: var(--q-four-color);
+	background-color: var(--q-four-color);
 }
 
 /******** BOARD ENDS ********/
@@ -125,12 +145,85 @@ header {
 /******** CREDITS STARTS ********/
 
 .credits-container {
-    margin: 10px;
-    text-align: right;
+	margin: 10px;
+	text-align: right;
 }
 
 .credits-container a {
-    color: white;
+	color: white;
 }
 
 /******** CREDITS ENDS ********/
+
+
+/******** MODAL STARTS ********/
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 11; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    color: #000;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    text-align: center;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+/******** MODAL ENDS /********
+
+/******** MEDIA QUERIES STARTS ********/
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 480px) {
+
+    .info-container .info {
+        
+        width: 300px;
+    }
+
+	.board-container .board {
+		height: 300px;
+		width: 300px;
+	}
+}
+
+@media screen and (min-width: 320px) {
+	h1 {
+		font-size: 1.7em;
+	}
+	h2 {
+		font-size: 1.2em;
+	}
+}
+
+/******** MEDIA QUERIES ENDS ********/

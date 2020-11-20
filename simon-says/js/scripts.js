@@ -6,82 +6,136 @@ let cpuQuadrants = [];
 let playerQuadrants = [];
 
 async function init() {
-    
-    cpuQuadrants = [];
-    playerQuadrants = [];
+	cpuQuadrants = [];
+	playerQuadrants = [];
 
-    const scoreText = document.querySelector('.score h3');
-    scoreText.innerHTML = `Score: 0`;
+	setNewGameButtonDisplay('none');
 
-    startSequence();
+	setScore(0);
+	setInstruction('Watch!');
+
+	startSequence();
 }
 
 async function startSequence() {
+	console.log('Starting sequence..');
 
-    moves = 0;
-    console.log('Starting sequence..')
-    playerTurn = false;
+	setInstruction('Watch!');
 
-    for (const q of cpuQuadrants) {
-        console.log(`cpuQuadrant: ${q}`);
-        await sleep(500);
-        const quadrant = document.querySelector(`div[data-key="${q}"]`);
-        quadrant.classList.add('active');
-        await sleep(200);
-        quadrant.classList.remove('active');
-    }
+	moves = 0;
+	playerTurn = false;
 
-    let randomNumber = randomQuadrant();
-    console.log(`random number: ${randomNumber}`);
-    if(true) {
+	for (const q of cpuQuadrants) {
+		await sleep(500);
+		const quadrant = document.querySelector(`div[data-key="${q}"]`);
+		quadrant.classList.add('active');
+		await sleep(200);
+		quadrant.classList.remove('active');
+	}
 
-        await sleep(500);
-        const quadrant = document.querySelector(`div[data-key="${randomNumber}"]`);
-        quadrant.classList.add('active');
-        cpuQuadrants.push(randomNumber);
-        await sleep(200);
-        quadrant.classList.remove('active');
-    }
-    
+	let randomNumber = randomQuadrant();
+	await sleep(500);
+	const quadrant = document.querySelector(`div[data-key="${randomNumber}"]`);
+	quadrant.classList.add('active');
+	cpuQuadrants.push(randomNumber);
+	await sleep(200);
+	quadrant.classList.remove('active');
 
-    playerTurn = true;
+	playerTurn = true;
+
+	setInstruction('Play!');
 }
 
 function randomQuadrant() {
-    return Math.floor(Math.random() * 4) + 1;
+	return Math.floor(Math.random() * 4) + 1;
 }
 
 async function playerClick(number) {
-    if(playerTurn === true) {
+	if (playerTurn === true) {
+		playerQuadrants.push(number);
 
-        console.log(`number clicked: ${number}`);
-        playerQuadrants.push(number);
+		temporalyActiveQuadrant(number);
 
-        const quadrant = document.querySelector(`div[data-key="${number}"]`);
-        quadrant.classList.add('active');
-        await sleep(200);
-        quadrant.classList.remove('active');
+		if (cpuQuadrants[moves] === number) {
+			moves++;
+			await sleep(500);
+			if (moves === cpuQuadrants.length) {
+				console.log('All good.. start new sequence.');
 
-        if(cpuQuadrants[moves] === number) {
-            
-            moves++;
+				setScore(moves);
 
-            const scoreText = document.querySelector('.score h3');
-            scoreText.innerHTML = `Score: ${moves}`;
-
-            await sleep(500);
-
-            if(moves === cpuQuadrants.length) {
-                console.log('All good.. start new sequence.');
-                startSequence();
-                return;
-            } else {
-                console.log('All good.. wait for next number.');
-            }
-
-        }
-        else {
-            console.log('game over dude..');
-        }
-    }
+				startSequence();
+			} else {
+				console.log('All good.. wait for next number.');
+			}
+		} else {
+			showGameOverModal();
+		}
+	}
 }
+
+function showGameOverModal() {
+	setNewGameButtonDisplay('block');
+    setScore(0);
+	setInstruction('');
+
+	const modal = document.getElementById('modal-result');
+	const resultText = document.querySelector(`#result-text`);
+	resultText.innerHTML = `Game Over! Your score: ${cpuQuadrants.length - 1}`;
+    modal.style.display = 'block';
+    
+    playerTurn = false;
+}
+
+async function temporalyActiveQuadrant(number) {
+	const quadrant = document.querySelector(`div[data-key="${number}"]`);
+	quadrant.classList.add('active');
+	await sleep(200);
+	quadrant.classList.remove('active');
+}
+
+function setNewGameButtonDisplay(display) {
+	const newGameButton = document.getElementById('new-game-button');
+	newGameButton.style.display = display;
+}
+function setScore(score) {
+	const scoreText = document.querySelector('.info-score');
+	scoreText.innerHTML = `Score: ${score}`;
+}
+function setInstruction(instruction) {
+	const instructionText = document.querySelector('.info-instruction');
+	instructionText.innerHTML = instruction;
+}
+function setNewGameButtonDisabledValue(value) {
+	const newGameButton = document.querySelector(`.play-start-new-game a`);
+	newGameButton.disabled = value;
+}
+
+document.addEventListener('DOMContentLoaded', (e) => {
+	const modalResult = document.getElementById('modal-result');
+	const spanCloseResult = document.querySelector(`#modal-result .close`);
+	spanCloseResult.onclick = function () {
+		modalResult.style.display = 'none';
+	};
+
+	const modalOptions = document.getElementById('modal-options');
+	const spanCloseOptions = document.querySelector(`#modal-options .close`);
+	spanCloseOptions.onclick = function () {
+		modalOptions.style.display = 'none';
+    };
+    
+	const optionsButton = document.getElementById('options-button');
+	optionsButton.onclick = function () {
+		modalOptions.style.display = 'block';
+    };
+    
+	window.onclick = function (event) {
+		if (event.target == modalResult) {
+			modalResult.style.display = 'none';
+		}
+
+		if (event.target == modalOptions) {
+			modalOptions.style.display = 'none';
+		}
+	};
+});
