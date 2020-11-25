@@ -1,5 +1,6 @@
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
+const newGameButton = document.getElementById('new-game-button');
 let playerTurn = false;
 let moves = 0;
 let cpuQuadrants = [];
@@ -38,16 +39,13 @@ async function init() {
 	cpuQuadrants = [];
 	playerQuadrants = [];
 
-	setNewGameButtonDisplay('none');
-
-	setScore(0);
-	setInstruction('Watch!');
+	newGameButton.classList.add('hide');
 
 	startSequence();
 }
 
 async function startSequence() {
-
+	setScore(cpuQuadrants.length);
 	setInstruction('Watch!');
 
 	moves = 0;
@@ -88,9 +86,6 @@ async function playerClick(number) {
 			moves++;
 			await sleep(500);
 			if (moves === cpuQuadrants.length) {
-
-				setScore(moves);
-
 				startSequence();
 			}
 		} else {
@@ -100,7 +95,7 @@ async function playerClick(number) {
 }
 
 function showGameOverModal() {
-	setNewGameButtonDisplay('block');
+	newGameButton.classList.remove('hide');
 	setScore(0);
 	setInstruction('');
 
@@ -119,10 +114,6 @@ async function temporalyActiveQuadrant(number) {
 	quadrant.classList.remove('active');
 }
 
-function setNewGameButtonDisplay(display) {
-	const newGameButton = document.getElementById('new-game-button');
-	newGameButton.style.display = display;
-}
 function setScore(score) {
 	const scoreText = document.querySelector('.info-score');
 	scoreText.innerHTML = `Score: ${score}`;
