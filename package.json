@@ -1,26 +1,23 @@
 {
-  "name": "games",
-  "version": "1.0.0",
-  "description": "Small games to practice html, css and js skills.",
-  "main": "index.js",
-  "scripts": {
-    "start": "lite-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jesusriosdev/games.git"
-  },
-  "author": "Jesus Rios <jesusriosdev@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jesusriosdev/games/issues"
-  },
-  "homepage": "https://github.com/jesusriosdev/games#readme",
-  "devDependencies": {
-    "lite-server": "^2.6.1"
-  },
-  "dependencies": {
-    "font-awesome": "^4.7.0"
-  }
+	"name": "games",
+	"version": "1.0.0",
+	"description": "Small games to practice html, css and js skills.",
+	"main": "index.js",
+	"scripts": {
+		"start": "lite-server",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jesusriosdev/games.git"
+	},
+	"author": "Jesus Rios <jesusriosdev@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/jesusriosdev/games/issues"
+	},
+	"homepage": "https://github.com/jesusriosdev/games#readme",
+	"devDependencies": {
+		"lite-server": "^2.6.1"
+	}
 }
